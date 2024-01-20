@@ -12,19 +12,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
 
-  private CANSparkMax motorOne;
-  private CANSparkMax motorTwo;
+  private CANSparkMax motor23;
+  private CANSparkMax motor30;
 
-  private final int motorOneID = 23;
-  private final int motorTwoID = 30;
+  private final int motor23ID = 23;
+  private final int motor30ID = 30;
 
-  private double motorOneSetpoint = 0.0;
-  private double motorTwoSetpoint = 0.0;
+  private double motor23Setpoint = 0.0;
+  private double motor30Setpoint = 0.0;
 
   @Override
   public void robotInit() {
-    motorOne = new CANSparkMax(motorOneID, MotorType.kBrushless);
-    motorTwo = new CANSparkMax(motorTwoID, MotorType.kBrushless);
+    motor23 = new CANSparkMax(motor23ID, MotorType.kBrushless);
+    motor30 = new CANSparkMax(motor30ID, MotorType.kBrushless);
   }
 
   @Override
@@ -38,17 +38,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    SmartDashboard.putNumber("Motor One", motorOneSetpoint);
-    SmartDashboard.putNumber("Motor Two", motorTwoSetpoint);
+    SmartDashboard.putNumber("Motor 23", motor23Setpoint);
+    SmartDashboard.putNumber("Motor 30", motor30Setpoint);
   }
 
   @Override
   public void teleopPeriodic() {
-    motorOneSetpoint = SmartDashboard.getNumber("Motor One", 0.0);
-    motorTwoSetpoint = SmartDashboard.getNumber("Motor Two", 0.0);
+    motor23Setpoint = SmartDashboard.getNumber("Motor 23", 0.0);
+    motor30Setpoint = SmartDashboard.getNumber("Motor 30", 0.0);
 
-    motorOne.set(motorOneSetpoint);
-    motorTwo.set(motorTwoSetpoint);
+    motor23.set(motor23Setpoint);
+    motor30.set(motor30Setpoint);
   }
 
   @Override
